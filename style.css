@@ -133,7 +133,10 @@ h1 {
   animation: fly 25s linear infinite;
   opacity: 0.7;
 }
-
+.hero, .intro, .quran, .closing, .calendar-button {
+  position: relative;
+  z-index: 10;
+}
 .butterfly1 { top: 10%; left: -60px; animation-delay: 0s; }
 .butterfly2 { top: 25%; left: -80px; animation-delay: 3s; }
 .butterfly3 { top: 40%; left: -50px; animation-delay: 6s; }
@@ -154,14 +157,6 @@ h1 {
     transform: translateX(120vw) translateY(100px) rotate(360deg);
     opacity: 0;
   }
-.hero,
-.intro,
-.quran,
-.closing,
-.calendar-button {
-  position: relative;
-  z-index: 10;
-}
 #countdown {
   font-family: 'Playfair Display', serif;
   font-size: 2.2rem;
