@@ -49,5 +49,25 @@
   </audio>
   <div id="audioToggle" class="audio-toggle paused"></div>
 
+  <p id="countdown" class="closing fade-in"></p>
+<a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=The+Wedding+of+Ilham+%26+Nasya&dates=20250628T070000/20250628T100000&details=Undangan+Pernikahan+Ilham+dan+Nasya&location=https://maps.app.goo.gl/bJP33CusfB4NaABP7&sf=true" target="_blank" class="calendar-button fade-in">
+  📅 Simpan ke Kalender
+</a>
+
+<script>
+  const target = new Date("2025-06-28T07:00:00");
+  const countdown = document.getElementById("countdown");
+
+  function updateCountdown() {
+    const now = new Date();
+    const diff = target - now;
+    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+    countdown.innerText = `💍 Tinggal ${d} hari menuju hari bahagia kami`;
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 3600000);
+</script>
+
 </body>
 </html>
