@@ -78,3 +78,21 @@ h1 {
   text-decoration: none;
   font-weight: bold;
 }
+
+.audio-toggle {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: #fff;
+  border: none;
+  font-size: 1.4rem;
+  padding: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 999;
+  transition: transform 0.3s ease;
+}
+
+.audio-toggle.playing {
+  transform: rotate(360deg);
+}
