@@ -2,10 +2,176 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>The Wedding Of Ilham & Nasya</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="script.js" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Open Sans', sans-serif;
+      background: #fffaf9;
+      color: #333;
+      text-align: center;
+      scroll-behavior: smooth;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1s ease, transform 1s ease;
+      will-change: opacity, transform;
+    }
+
+    .show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hero {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      margin: 0;
+    }
+
+    .subtext {
+      color: #7a7a7a;
+      margin: 0.5rem 0;
+    }
+
+    .date {
+      color: #e48c8c;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .photo-container {
+      margin: 2rem auto;
+      max-width: 600px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .photo-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .quran {
+      font-style: italic;
+      margin: 2rem auto;
+      max-width: 700px;
+      font-size: 1rem;
+      color: #444;
+      line-height: 1.6;
+    }
+
+    .prayer {
+      font-size: 1rem;
+      margin-top: 2rem;
+      font-weight: 500;
+    }
+
+    .maps a {
+      color: #d56c8c;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .audio-toggle {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      width: 40px;
+      height: 40px;
+      background: url('cassette.png') no-repeat center center;
+      background-size: contain;
+      border: none;
+      cursor: pointer;
+      z-index: 999;
+      animation: spin 4s linear infinite;
+    }
+    .audio-toggle.paused {
+      animation-play-state: paused;
+      opacity: 0.4;
+    }
+    .closing {
+      font-style: italic;
+      color: #555;
+      margin: 2rem auto;
+      max-width: 700px;
+      line-height: 1.5;
+    }
+    .calendar-button {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+      background-color: #e48c8c;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+    .calendar-button:hover {
+      background-color: #c36b6b;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* 🦋 Kupu-kupu terbang (di belakang konten) */
+    .butterfly {
+      position: fixed;
+      width: 32px;
+      pointer-events: none;
+      z-index: 0;
+      animation: fly 25s linear infinite;
+      opacity: 0.7;
+    }
+
+    .butterfly1 { top: 10%; left: -60px; animation-delay: 0s; }
+    .butterfly2 { top: 25%; left: -80px; animation-delay: 3s; }
+    .butterfly3 { top: 40%; left: -50px; animation-delay: 6s; }
+    .butterfly4 { top: 55%; left: -90px; animation-delay: 9s; }
+    .butterfly5 { top: 70%; left: -70px; animation-delay: 12s; }
+    .butterfly6 { top: 85%; left: -100px; animation-delay: 15s; }
+
+    @keyframes fly {
+      0% {
+        transform: translateX(0) translateY(0) rotate(0deg);
+        opacity: 0.3;
+      }
+      50% {
+        transform: translateX(60vw) translateY(-80px) rotate(180deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateX(120vw) translateY(100px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Countdown styling */
+    #countdown {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: #e48c8c;
+      font-weight: 700;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+      margin-top: 2rem;
+    }
+  </style>
 </head>
 <body>
 
@@ -45,40 +211,84 @@
 
   <!-- 🎵 Musik -->
   <audio autoplay loop>
-    <source src="green-day.mp3" type="audio/mpeg">
+    <source src="green-day.mp3" type="audio/mpeg" />
   </audio>
   <div id="audioToggle" class="audio-toggle paused"></div>
 
   <p id="countdown" class="closing fade-in"></p>
+
   <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=The+Wedding+of+Ilham+%26+Nasya&dates=20250628T070000/20250628T100000&details=Undangan+Pernikahan+Ilham+dan+Nasya&location=https://maps.app.goo.gl/bJP33CusfB4NaABP7&sf=true" target="_blank" class="calendar-button fade-in">
     📅 Simpan ke Kalender
   </a>
 
-<script>
-  const target = new Date("2025-06-28T07:00:00").getTime();
-  const countdown = document.getElementById("countdown");
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+          } else {
+            entry.target.classList.remove('show');
+          }
+        });
+      }, {
+        threshold: 0.3
+      });
 
-  function updateCountdown() {
-    const now = new Date().getTime();
-    const diff = target - now;
+      document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-    if (diff <= 0) {
-      countdown.innerText = "💍 Hari bahagia telah tiba! 🎉";
-      clearInterval(interval);
-      return;
-    }
+      // Musik auto play saat scroll
+      let audioStarted = false;
+      const toggleBtn = document.getElementById('audioToggle');
+      const audio = document.querySelector('audio');
 
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+      window.addEventListener('scroll', () => {
+        if (!audioStarted) {
+          if (audio) {
+            audio.play();
+            audioStarted = true;
+            toggleBtn.classList.remove('paused');
+          }
+        }
+      });
 
-    countdown.innerText = `💍 ${days} Hari ${hours} Jam ${minutes} Menit ${seconds} Detik menuju hari bahagia kami`;
-  }
+      // Tombol toggle audio
+      toggleBtn.addEventListener('click', () => {
+        if (audio.paused) {
+          audio.play();
+          toggleBtn.classList.remove('paused');
+        } else {
+          audio.pause();
+          toggleBtn.classList.add('paused');
+        }
+      });
 
-  updateCountdown();
-  const interval = setInterval(updateCountdown, 1000);
-</script>
+      // Countdown
+      const target = new Date("2025-06-28T07:00:00");
+      const countdown = document.getElementById("countdown");
 
+      function updateCountdown() {
+        const now = new Date();
+        let diff = Math.floor((target - now) / 1000); // beda waktu dalam detik
+
+        if (diff < 0) {
+          countdown.innerText = "🎉 Hari bahagia sudah tiba! Selamat!";
+          return;
+        }
+
+        const days = Math.floor(diff / (24 * 3600));
+        diff %= 24 * 3600;
+        const hours = Math.floor(diff / 3600);
+        diff %= 3600;
+        const minutes = Math.floor(diff / 60);
+        const seconds = diff % 60;
+
+        countdown.innerText = `${days} Hari ${hours} Jam ${minutes} Menit ${seconds} Detik`;
+      }
+
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+    });
+  </script>
 </body>
 </html>
