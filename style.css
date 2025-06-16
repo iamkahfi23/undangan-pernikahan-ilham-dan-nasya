@@ -154,4 +154,12 @@ h1 {
     transform: translateX(120vw) translateY(100px) rotate(360deg);
     opacity: 0;
   }
+.hero,
+.intro,
+.quran,
+.closing,
+.calendar-button {
+  position: relative;
+  z-index: 10;
 }
+
