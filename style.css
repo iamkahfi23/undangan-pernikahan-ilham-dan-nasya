@@ -162,4 +162,13 @@ h1 {
   position: relative;
   z-index: 10;
 }
-
+#countdown {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  color: #d56c8c;
+  font-weight: 700;
+  margin-top: 1rem;
+  letter-spacing: 1px;
+  user-select: none;
+  text-shadow: 1px 1px 3px rgba(213, 108, 140, 0.7);
+}
