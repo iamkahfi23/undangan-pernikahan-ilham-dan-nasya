@@ -97,6 +97,27 @@ h1 {
   animation-play-state: paused;
   opacity: 0.4;
 }
+.closing {
+  font-style: italic;
+  color: #555;
+  margin: 2rem auto;
+  max-width: 700px;
+  line-height: 1.5;
+}
+.calendar-button {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  background-color: #e48c8c;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+.calendar-button:hover {
+  background-color: #c36b6b;
+}
 
 @keyframes spin {
   0% { transform: rotate(0deg); }
