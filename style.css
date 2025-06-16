@@ -13,6 +13,7 @@ body {
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 1s ease, transform 1s ease;
+  will-change: opacity, transform;
 }
 
 .show {
@@ -95,4 +96,40 @@ h1 {
 
 .audio-toggle.playing {
   transform: rotate(360deg);
+}
+
+/* 🦋 Kupu-kupu animasi */
+.butterfly {
+  position: fixed;
+  width: 40px;
+  pointer-events: none;
+  z-index: 999;
+  animation: fly 20s linear infinite;
+}
+
+.butterfly1 {
+  top: 10%;
+  left: -50px;
+  animation-delay: 0s;
+}
+
+.butterfly2 {
+  top: 60%;
+  left: -70px;
+  animation-delay: 5s;
+}
+
+@keyframes fly {
+  0% {
+    transform: translateX(0) translateY(0) rotate(0deg);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateX(60vw) translateY(-100px) rotate(180deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(120vw) translateY(100px) rotate(360deg);
+    opacity: 0;
+  }
 }
