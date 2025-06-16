@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }, {
-    threshold: 0.5
+    threshold: 0.3
   });
 
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
