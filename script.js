@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('show');
+      } else {
+        entry.target.classList.remove('show');
       }
     });
   }, {
@@ -13,29 +15,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Musik auto play saat scroll
   let audioStarted = false;
+  const toggleBtn = document.getElementById('audioToggle');
+  const audio = document.querySelector('audio');
+
   window.addEventListener('scroll', () => {
     if (!audioStarted) {
-      const audio = document.querySelector('audio');
       if (audio) {
         audio.play();
         audioStarted = true;
+        toggleBtn.classList.remove('paused');
       }
     }
   });
 
   // Tombol toggle audio
-  const toggleBtn = document.getElementById('audioToggle');
-  const audio = document.querySelector('audio');
-
   toggleBtn.addEventListener('click', () => {
     if (audio.paused) {
       audio.play();
-      toggleBtn.classList.add('playing');
-      toggleBtn.textContent = '🔊';
+      toggleBtn.classList.remove('paused');
     } else {
       audio.pause();
-      toggleBtn.classList.remove('playing');
-      toggleBtn.textContent = '🔇';
+      toggleBtn.classList.add('paused');
     }
   });
 });
