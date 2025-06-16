@@ -50,23 +50,34 @@
   <div id="audioToggle" class="audio-toggle paused"></div>
 
   <p id="countdown" class="closing fade-in"></p>
-<a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=The+Wedding+of+Ilham+%26+Nasya&dates=20250628T070000/20250628T100000&details=Undangan+Pernikahan+Ilham+dan+Nasya&location=https://maps.app.goo.gl/bJP33CusfB4NaABP7&sf=true" target="_blank" class="calendar-button fade-in">
-  📅 Simpan ke Kalender
-</a>
+  <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=The+Wedding+of+Ilham+%26+Nasya&dates=20250628T070000/20250628T100000&details=Undangan+Pernikahan+Ilham+dan+Nasya&location=https://maps.app.goo.gl/bJP33CusfB4NaABP7&sf=true" target="_blank" class="calendar-button fade-in">
+    📅 Simpan ke Kalender
+  </a>
 
 <script>
-  const target = new Date("2025-06-28T07:00:00");
+  const target = new Date("2025-06-28T07:00:00").getTime();
   const countdown = document.getElementById("countdown");
 
   function updateCountdown() {
-    const now = new Date();
+    const now = new Date().getTime();
     const diff = target - now;
-    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-    countdown.innerText = `💍 Tinggal ${d} hari menuju hari bahagia kami`;
+
+    if (diff <= 0) {
+      countdown.innerText = "💍 Hari bahagia telah tiba! 🎉";
+      clearInterval(interval);
+      return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    countdown.innerText = `💍 ${days} Hari ${hours} Jam ${minutes} Menit ${seconds} Detik menuju hari bahagia kami`;
   }
 
   updateCountdown();
-  setInterval(updateCountdown, 3600000);
+  const interval = setInterval(updateCountdown, 1000);
 </script>
 
 </body>
