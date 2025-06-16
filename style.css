@@ -84,40 +84,41 @@ h1 {
   position: fixed;
   bottom: 20px;
   left: 20px;
-  background: #fff;
+  width: 40px;
+  height: 40px;
+  background: url('cassette.png') no-repeat center center;
+  background-size: contain;
   border: none;
-  font-size: 1.4rem;
-  padding: 8px;
-  border-radius: 50%;
   cursor: pointer;
   z-index: 999;
-  transition: transform 0.3s ease;
+  animation: spin 4s linear infinite;
+}
+.audio-toggle.paused {
+  animation-play-state: paused;
+  opacity: 0.4;
 }
 
-.audio-toggle.playing {
-  transform: rotate(360deg);
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
-/* 🦋 Kupu-kupu animasi */
+/* 🦋 Kupu-kupu terbang (di belakang konten) */
 .butterfly {
   position: fixed;
-  width: 40px;
+  width: 32px;
   pointer-events: none;
-  z-index: 999;
-  animation: fly 20s linear infinite;
+  z-index: 0;
+  animation: fly 25s linear infinite;
+  opacity: 0.7;
 }
 
-.butterfly1 {
-  top: 10%;
-  left: -50px;
-  animation-delay: 0s;
-}
-
-.butterfly2 {
-  top: 60%;
-  left: -70px;
-  animation-delay: 5s;
-}
+.butterfly1 { top: 10%; left: -60px; animation-delay: 0s; }
+.butterfly2 { top: 25%; left: -80px; animation-delay: 3s; }
+.butterfly3 { top: 40%; left: -50px; animation-delay: 6s; }
+.butterfly4 { top: 55%; left: -90px; animation-delay: 9s; }
+.butterfly5 { top: 70%; left: -70px; animation-delay: 12s; }
+.butterfly6 { top: 85%; left: -100px; animation-delay: 15s; }
 
 @keyframes fly {
   0% {
@@ -125,7 +126,7 @@ h1 {
     opacity: 0.3;
   }
   50% {
-    transform: translateX(60vw) translateY(-100px) rotate(180deg);
+    transform: translateX(60vw) translateY(-80px) rotate(180deg);
     opacity: 1;
   }
   100% {
