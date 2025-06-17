@@ -130,7 +130,6 @@
       100% { transform: rotate(360deg); }
     }
 
-    /* 🦋 Kupu-kupu terbang (di belakang konten) */
     .butterfly {
       position: fixed;
       width: 32px;
@@ -162,7 +161,6 @@
       }
     }
 
-    /* Countdown styling */
     #countdown {
       font-family: 'Playfair Display', serif;
       font-size: 2rem;
@@ -174,7 +172,6 @@
   </style>
 </head>
 <body>
-
   <section class="hero">
     <h1>The Wedding Of <br> Ilham & Nasya</h1>
   </section>
@@ -193,17 +190,13 @@
   </section>
 
   <section class="quran fade-in">
-    <p><strong>وَمِنْ ءَايَٰتِهِۦٓ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَٰجًۭا لِّتَسْكُنُوٓا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةًۭ وَرَحْمَةً ۚ<br>
-    إِنَّ فِى ذَٰلِكَ لَءَايَٰتٍۢ لِّقَوْمٍۢ يَتَفَكَّرُونَ</strong></p>
-    <p><em>“Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri,
-      agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang.
-      Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir.”</em><br>
+    <p><strong>وَمِنْ ءَايَٰتِهِۦٓ...</strong></p>
+    <p><em>“Dan di antara tanda-tanda...”</em><br>
       — QS. Ar-Rum: 21</p>
-    <p class="prayer">Semoga Allah SWT menjadikan pernikahan kami sebagai ibadah yang penuh berkah, sakinah, mawaddah, dan rahmah. Aamiin.</p>
+    <p class="prayer">Semoga Allah SWT menjadikan pernikahan kami sebagai ibadah yang penuh berkah...</p>
     <p class="maps"><a href="https://maps.app.goo.gl/bJP33CusfB4NaABP7" target="_blank">Lihat Lokasi di Google Maps</a></p>
   </section>
 
-  <!-- 🦋 Kupu-kupu terbang -->
   <img src="butterfly.png" class="butterfly butterfly1" alt="Butterfly">
   <img src="butterfly.png" class="butterfly butterfly2" alt="Butterfly">
   <img src="butterfly.png" class="butterfly butterfly3" alt="Butterfly">
@@ -211,7 +204,6 @@
   <img src="butterfly.png" class="butterfly butterfly5" alt="Butterfly">
   <img src="butterfly.png" class="butterfly butterfly6" alt="Butterfly">
 
-  <!-- 🎵 Musik -->
   <audio autoplay loop>
     <source src="green-day.mp3" type="audio/mpeg" />
   </audio>
@@ -220,7 +212,7 @@
   <p id="countdown" class="closing fade-in"></p>
 
   <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=The+Wedding+of+Ilham+%26+Nasya&dates=20250628T070000/20250628T100000&details=Undangan+Pernikahan+Ilham+dan+Nasya&location=https://maps.app.goo.gl/bJP33CusfB4NaABP7&sf=true" target="_blank" class="calendar-button fade-in">
-    📅 Simpan ke Kalender
+    🗓 Simpan ke Kalender
   </a>
 
   <script>
@@ -239,7 +231,6 @@
 
       document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-      // Musik auto play saat scroll
       let audioStarted = false;
       const toggleBtn = document.getElementById('audioToggle');
       const audio = document.querySelector('audio');
@@ -254,7 +245,6 @@
         }
       });
 
-      // Tombol toggle audio
       toggleBtn.addEventListener('click', () => {
         if (audio.paused) {
           audio.play();
@@ -265,13 +255,12 @@
         }
       });
 
-      // Countdown
       const target = new Date("2025-06-28T07:00:00");
       const countdown = document.getElementById("countdown");
 
       function updateCountdown() {
         const now = new Date();
-        let diff = Math.floor((target - now) / 1000); // beda waktu dalam detik
+        let diff = Math.floor((target - now) / 1000);
 
         if (diff < 0) {
           countdown.innerText = "🎉 Hari bahagia sudah tiba! Selamat!";
