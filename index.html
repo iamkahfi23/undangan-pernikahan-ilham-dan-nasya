@@ -19,7 +19,6 @@
       opacity: 0;
       transform: translateY(30px);
       transition: opacity 1s ease, transform 1s ease;
-      will-change: opacity, transform;
     }
 
     .show {
@@ -99,10 +98,12 @@
       z-index: 999;
       animation: spin 4s linear infinite;
     }
+
     .audio-toggle.paused {
       animation-play-state: paused;
       opacity: 0.4;
     }
+
     .closing {
       font-style: italic;
       color: #555;
@@ -110,6 +111,7 @@
       max-width: 700px;
       line-height: 1.5;
     }
+
     .calendar-button {
       display: inline-block;
       margin-top: 1rem;
@@ -121,6 +123,7 @@
       font-weight: bold;
       transition: background 0.3s ease;
     }
+
     .calendar-button:hover {
       background-color: #c36b6b;
     }
@@ -147,18 +150,9 @@
     .butterfly6 { top: 85%; left: -100px; animation-delay: 15s; }
 
     @keyframes fly {
-      0% {
-        transform: translateX(0) translateY(0) rotate(0deg);
-        opacity: 0.3;
-      }
-      50% {
-        transform: translateX(60vw) translateY(-80px) rotate(180deg);
-        opacity: 1;
-      }
-      100% {
-        transform: translateX(120vw) translateY(100px) rotate(360deg);
-        opacity: 0;
-      }
+      0% { transform: translateX(0) translateY(0) rotate(0deg); opacity: 0.3; }
+      50% { transform: translateX(60vw) translateY(-80px) rotate(180deg); opacity: 1; }
+      100% { transform: translateX(120vw) translateY(100px) rotate(360deg); opacity: 0; }
     }
 
     #countdown {
@@ -172,6 +166,7 @@
   </style>
 </head>
 <body>
+
   <section class="hero">
     <h1>The Wedding Of <br> Ilham & Nasya</h1>
   </section>
@@ -190,16 +185,16 @@
   </section>
 
   <section class="quran fade-in">
-    <p><strong>وَمِنْ ءَايَٰتِهِۦٓ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَٰجًۭا لِّتَسْكُنُوٓا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةًۭ وَرَحْمَةً ۚ<br>
-    إِنَّ فِى ذَٰلِكَ لَءَايَٰتٍۢ لِّقَوْمٍۢ يَتَفَكَّرُونَ</strong></p>
-    <p><em>“Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri,
-      agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang.
-      Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir.”</em><br>
-      — QS. Ar-Rum: 21</p>
-    <p class="prayer">Semoga Allah SWT menjadikan pernikahan kami sebagai ibadah yang penuh berkah...</p>
+    <p style="font-size:1.3rem;"><strong>
+      وَمِنْ ءَايَاتِهِۦٓ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَٰجًۭا لِّتَسْكُنُوٓا۟ إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةًۭ وَرَحْمَةً ۚ إِنَّ فِى ذَٰلِكَ لَـَٔايَـٰتٍۢ لِّقَوْمٍۢ يَتَفَكَّرُونَ
+    </strong></p>
+    <p><em>“Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda bagi kaum yang berpikir.”</em></p>
+    <p>— QS. Ar-Rum: 21</p>
+    <p class="prayer">Semoga Allah SWT menjadikan pernikahan kami sebagai ibadah yang penuh berkah, sakinah, mawaddah, dan rahmah. Aamiin.</p>
     <p class="maps"><a href="https://maps.app.goo.gl/bJP33CusfB4NaABP7" target="_blank">Lihat Lokasi di Google Maps</a></p>
   </section>
 
+  <!-- Kupu-Kupu -->
   <img src="butterfly.png" class="butterfly butterfly1" alt="Butterfly">
   <img src="butterfly.png" class="butterfly butterfly2" alt="Butterfly">
   <img src="butterfly.png" class="butterfly butterfly3" alt="Butterfly">
@@ -207,44 +202,42 @@
   <img src="butterfly.png" class="butterfly butterfly5" alt="Butterfly">
   <img src="butterfly.png" class="butterfly butterfly6" alt="Butterfly">
 
+  <!-- Audio -->
   <audio autoplay loop>
     <source src="green-day.mp3" type="audio/mpeg" />
   </audio>
   <div id="audioToggle" class="audio-toggle paused"></div>
 
+  <!-- Countdown -->
   <p id="countdown" class="closing fade-in"></p>
 
+  <!-- Tombol Kalender -->
   <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=The+Wedding+of+Ilham+%26+Nasya&dates=20250628T070000/20250628T100000&details=Undangan+Pernikahan+Ilham+dan+Nasya&location=https://maps.app.goo.gl/bJP33CusfB4NaABP7&sf=true" target="_blank" class="calendar-button fade-in">
     🗓 Simpan ke Kalender
   </a>
 
+  <!-- Script -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('show');
-          } else {
-            entry.target.classList.remove('show');
           }
         });
-      }, {
-        threshold: 0.3
-      });
+      }, { threshold: 0.3 });
 
       document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-      let audioStarted = false;
       const toggleBtn = document.getElementById('audioToggle');
       const audio = document.querySelector('audio');
+      let audioStarted = false;
 
       window.addEventListener('scroll', () => {
         if (!audioStarted) {
-          if (audio) {
-            audio.play();
-            audioStarted = true;
-            toggleBtn.classList.remove('paused');
-          }
+          audio.play();
+          audioStarted = true;
+          toggleBtn.classList.remove('paused');
         }
       });
 
