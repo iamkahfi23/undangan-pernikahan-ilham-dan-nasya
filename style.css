@@ -9,42 +9,41 @@ body {
   scroll-behavior: smooth;
 }
 
+/* === FADE IN === */
 .fade-in {
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 1s ease, transform 1s ease;
   will-change: opacity, transform;
 }
-
 .show {
   opacity: 1;
   transform: translateY(0);
 }
 
+/* === HERO SECTION === */
 .hero {
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 h1 {
   font-family: 'Playfair Display', serif;
   font-size: 2.5rem;
   margin: 0;
 }
-
 .subtext {
   color: #7a7a7a;
   margin: 0.5rem 0;
 }
-
 .date {
   color: #e48c8c;
   font-weight: bold;
   font-size: 1.2rem;
 }
 
+/* === PHOTO SECTION === */
 .photo-container {
   margin: 2rem auto;
   max-width: 600px;
@@ -52,13 +51,13 @@ h1 {
   overflow: hidden;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
-
 .photo-container img {
   width: 100%;
   height: auto;
   display: block;
 }
 
+/* === TEXT SECTIONS === */
 .quran {
   font-style: italic;
   margin: 2rem auto;
@@ -67,19 +66,53 @@ h1 {
   color: #444;
   line-height: 1.6;
 }
-
 .prayer {
   font-size: 1rem;
   margin-top: 2rem;
   font-weight: 500;
 }
+.closing {
+  font-style: italic;
+  color: #555;
+  margin: 2rem auto;
+  max-width: 700px;
+  line-height: 1.5;
+}
 
+/* === COUNTDOWN === */
+#countdown {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  color: #d56c8c;
+  font-weight: 700;
+  margin-top: 1rem;
+  letter-spacing: 1px;
+  user-select: none;
+  text-shadow: 1px 1px 3px rgba(213, 108, 140, 0.7);
+}
+
+/* === BUTTONS === */
+.calendar-button {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  background-color: #e48c8c;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+.calendar-button:hover {
+  background-color: #c36b6b;
+}
 .maps a {
   color: #d56c8c;
   text-decoration: none;
   font-weight: bold;
 }
 
+/* === AUDIO TOGGLE === */
 .audio-toggle {
   position: fixed;
   bottom: 20px;
@@ -97,34 +130,12 @@ h1 {
   animation-play-state: paused;
   opacity: 0.4;
 }
-.closing {
-  font-style: italic;
-  color: #555;
-  margin: 2rem auto;
-  max-width: 700px;
-  line-height: 1.5;
-}
-.calendar-button {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.6rem 1.2rem;
-  background-color: #e48c8c;
-  color: white;
-  text-decoration: none;
-  border-radius: 8px;
-  font-weight: bold;
-  transition: background 0.3s ease;
-}
-.calendar-button:hover {
-  background-color: #c36b6b;
-}
-
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
 
-/* 🦋 Kupu-kupu terbang (di belakang konten) */
+/* === BUTTERFLY ANIMATIONS === */
 .butterfly {
   position: fixed;
   width: 32px;
@@ -157,13 +168,4 @@ h1 {
     transform: translateX(120vw) translateY(100px) rotate(360deg);
     opacity: 0;
   }
-#countdown {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.2rem;
-  color: #d56c8c;
-  font-weight: 700;
-  margin-top: 1rem;
-  letter-spacing: 1px;
-  user-select: none;
-  text-shadow: 1px 1px 3px rgba(213, 108, 140, 0.7);
 }
